@@ -15,19 +15,19 @@ select opt in "${options[@]}"; do
 		if [ -d "/Volumes/Macintosh HD - Data" ]; then
    			diskutil rename "Macintosh HD - Data" "Data"
 		fi
-		echo -e "${GRN}Tạo người dùng mới"
-        echo -e "${BLU}Nhấn Enter để chuyển bước tiếp theo, có thể không điền sẽ tự động nhận giá trị mặc định"
-  		echo -e "Nhập tên người dùng (Mặc định: MAC)"
+		echo -e "${GRN}Create new user"
+        echo -e "${BLU}Enter RealName"
+  		echo -e "Enter Username (Default: MAC)"
 		read realName
   		realName="${realName:=MAC}"
-    	echo -e "${BLUE}Nhận username ${RED}VIẾT LIỀN KHÔNG DẤU ${GRN} (Mặc định: MAC)"
+    	echo -e "${BLUE} Enter username ${RED}without marks ${GRN} (Default: MAC)"
       	read username
 		username="${username:=MAC}"
-  		echo -e "${BLUE}Nhập mật khẩu (mặc định: 1234)"
+  		echo -e "${BLUE}Enter Password (default: 1234)"
     	read passw
       	passw="${passw:=1234}"
 		dscl_path='/Volumes/Data/private/var/db/dslocal/nodes/Default' 
-        echo -e "${GREEN}Đang tạo user"
+        echo -e "${GREEN}create user"
   		# Create user
     	dscl -f "$dscl_path" localhost -create "/Local/Default/Users/$username"
       	dscl -f "$dscl_path" localhost -create "/Local/Default/Users/$username" UserShell "/bin/zsh"
